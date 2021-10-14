@@ -16,6 +16,15 @@ public class DiaristaController {
 
     @Autowired
     private DiaristaRepository repository;
+
+    @GetMapping
+    public ModelAndView listar() {
+        var modelAndView = new ModelAndView("admin/diaristas/listar");
+
+        modelAndView.addObject("diaristas", repository.findAll());
+
+        return modelAndView;
+    }
     
     @GetMapping("/cadastrar")
     public ModelAndView cadastrar() {
